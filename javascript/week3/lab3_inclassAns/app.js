@@ -1,6 +1,7 @@
 const mathhelpers = require('./mathHelpers')
 const process = require('process')
 const fs = require('fs')
+const { EOL } = require('os')//os.EOL
 
 //position matters for array destructure. Empty commas are used for skipping positions
 //process.argv(slice) as alternative 
@@ -25,19 +26,25 @@ processInput(`${x1},${y1},${x2},${y2}`)
 
 //creat a folder called data points 
 fs.mkdir("dataPoints", (err) => {
+    //pathfinding 
+    const dirName = "dataPoints"
+    const dirPath = path.join(__dirname, dirName, "points.txt")
     if(err) return console.log(err);
     console.log("Directory already exists")
     //error codes
     if(err.code === "EEXIST") return 'something'
     //nest functions if there is a dependency 
-    fs.writeFile("dataPoints/points.txt", userInput, (err) => {
+    fs.writeFile(dirPath, userInput, (err) => {
         if (err) return console.log(err)
         console.log('Content Saved')
+        //pathfinding 
+        // path.join(__dirname, "dataPoints", "points.txt")
+        // console.log(__dirname + /) ::: from root to current directory (full path)
+        const distanceMsg = `${EOL}distance message...`
+        
 
-        const distanceMsg = `distance message...`
-
-        fs.appendFile("dataPoints/points.txt", distanceMsg, (err) => {
-            if (err) return console.log(err)
+        fs.appendFile(dirPath, distanceMsg, (err) => {
+            if (err) return console.log
         })
     });
 
