@@ -15,6 +15,8 @@ function processInput(main){
         console.log('content saved')
     })
     fs.appendFile('./dataPoints/points.txt', text, (err) =>{ if(err){throw err}})
+    
 }
+
 
 processInput(userInput)
