@@ -12,8 +12,8 @@ function square(num1,num2){
 }
 
 function distance(num){
-    num1 = square(num[0],num[2])
-    num2 = square(num[3],num[1])
-    return squareRoot(num1,num2)
+    x = square(num[0],num[2])
+    y = square(num[3],num[1])
+    return squareRoot(x,y)
 }
 
