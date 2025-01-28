@@ -38,3 +38,25 @@ l1.show_arsenal()
 
 l2 = loadout('Qorvex', 'braton', 'lex', 'kronen', 'dethcube', 'nech')
 l2.show_arsenal()
+
+
+#adam fent 
+class human:
+    def __init__(self,name,age,height):
+        self.name = name 
+        self.age = age
+        self.height = height
+
+    def show_name(self):
+        return self.name
+    
+    def show_age(self):
+        return self.age
+    
+    def set_age(self, age):
+        self.age = age
+
+adam = human("adam",20,"5'8")
+
+adam.set_age(21)
+print(adam.show_age())
