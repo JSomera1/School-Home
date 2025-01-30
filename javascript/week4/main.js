@@ -6,7 +6,7 @@ const extension = "."+proc[1]
 
 
 
-const name = (dirpath, extension) =>{
+const fileFilter = (dirpath, extension) =>{
     mod.mod(dirpath, extension, (err, result) => {
         if(err){
             return console.log(err)
@@ -17,4 +17,4 @@ const name = (dirpath, extension) =>{
     }) 
 }
 
-name(dirpath,extension)
+fileFilter(dirpath,extension)
