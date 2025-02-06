@@ -28,9 +28,10 @@ function nicemenu(data){
         categories[MealType.trim()].push(correctFormat)
     }
 
-    for (const category in categories) {
-        completedOutput = completedOutput + `* ${category.charAt(0).toUpperCase() + category.slice(1)} Items *\n`
-        completedOutput = completedOutput + categories[category].join("\n") + "\n\n";
+    for (let j = 0;j<categories.length;j++) {
+        // completedOutput = completedOutput + `* ${categories[j].charAt(0).toUpperCase() + categories[j].slice(1)} Items *\n`
+        // completedOutput = completedOutput + categories[j].join("\n") + "\n\n";
+        console.log(categories[j])
     }
 
     return completedOutput
