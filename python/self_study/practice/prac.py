@@ -48,7 +48,9 @@ with open("output.csv", encoding="utf-8") as ap:
     for i in read:
         print(i)
 
-stringson = """["string", 21, {"name":"dict", "list":[1,2,3]}]"""
+
+#requires triple quotations for json objects 
+stringson = """["string", 21, {"name":"dict", "list":[1,2,3]}]\n1 """
 data = json.loads(stringson)
 
 with open("sonic.json", "w") as tp:
