@@ -7,16 +7,14 @@ const {Transform} = require("stream")
 function filterByCountry(country) {
   const filter = new Transform({
     transform:(chunk, en, callback) => {
-      const ls = []
       const str = chunk.toString()
       const obj = JSON.parse(str)
 
       if (obj.country === country){
-        ls.push(obj)
+        this.push(str)
       }
       
-      console.log(ls)
-      callback(null, this.obj)
+      callback(null, str)
     }
   })
 
