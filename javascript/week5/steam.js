@@ -1,23 +1,21 @@
 const { createReadStream } = require('fs');
 const csv = require("csvtojson");
 const { createGunzip } = require('zlib')
-const {Transform} = require("stream")
+const {Transform} = require("stream");
+const { callbackify } = require('util');
 
 // -----Your filterByCountry function here:-----
 function filterByCountry(country) {
   const filter = new Transform({
-    transform:(chunk, en, callback) => {
-      const str = chunk.toString()
-      const obj = JSON.parse(str)
+    transform(chunk, en, callback){
+      const obj = JSON.parse(chunk.toString())
 
       if (obj.country === country){
-        this.push(str)
+        this.push(chunk.toString())
       }
-      
-      callback(null, str)
+      callback()
     }
   })
-
   return filter
 
 
@@ -27,14 +25,28 @@ function filterByCountry(country) {
 
 // --------Your sumProfit function here:--------
 
-const sumProfit = () => {
+function sumProfit() {
+  let total = 0
   const sum = new Transform({
-    transform:(chunk, en, callback) => {
-      const nums = JSON.parse(chunk.toString())
-      parseFloat(nums.profit.trim())
-      total += profit
+    transform(chunk, en, callback){
+      const nums = parseFloat(JSON.parse(chunk.toString()).profit.trim())
+
+      //add all the results together somehow 
+      total += nums
+      callback()
+      
+
+    },
+    
+    flush(callback) {
+      console.log(`profit from Italy: ${total}`);
+      callback();
     }
   })
+  
+
+
+  return sum
 }
 //----------------------------------------------
 
@@ -42,5 +54,5 @@ createReadStream('data.csv.gz')
   .pipe(createGunzip())
   .pipe(csv())                       
   .pipe(filterByCountry('Italy'))        
-  .pipe(process.stdout)                     
-  // .pipe(process.stdout)  
+  .pipe(sumProfit())                     
+  .pipe(process.stdout)  
