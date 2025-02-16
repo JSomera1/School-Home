@@ -1,2 +1,26 @@
 
 The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (undefined,undefined), (undefined,undefined) is NaN
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321
+The distance between your two points: (10,5), (2,3) is 8.246211251235321

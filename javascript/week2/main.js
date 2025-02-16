@@ -9,12 +9,10 @@ function processInput(main){
     const solution = math.distance(main).toString()
     const text = `The distance between your two points: (${main[0]},${main[1]}), (${main[2]},${main[3]}) is ${solution}`
     fs.mkdir('./dataPoints', () => {
-        fs.appendFile('./dataPoints/points.txt', '', (err) =>{
-            if(err){ throw err}
-        })
+        fs.appendFile('./dataPoints/points.txt', `\n${text}`, (err) =>{ if(err){throw err}})
         console.log('content saved')
     })
-    fs.appendFile('./dataPoints/points.txt', `\n${text}`, (err) =>{ if(err){throw err}})
+    // fs.appendFile('./dataPoints/points.txt', `\n${text}`, (err) =>{ if(err){throw err}})
     
 }
 
