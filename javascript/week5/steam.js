@@ -39,7 +39,9 @@ function sumProfit() {
     },
     
     flush(callback) {
-      console.log(`profit from Italy: ${total}`);
+      console.log(`profit from Italy: ${total.toLocaleString(undefined, {
+        minimumFractionDigits: 2, 
+        maximumFractionDigits: 2})}`);
       callback();
     }
   })
