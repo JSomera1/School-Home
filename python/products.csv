@@ -1,0 +1,18 @@
+name,price,available,category
+apple,1.49,10,produce
+bananas,3.49,5,produce
+lemon,1.0,5,produce
+orange,1.19,0,produce
+raspberries,7.99,10,produce
+potato,1.49,22,produce
+onions,3.99,12,produce
+tomato,2.99,25,produce
+bread,1.59,50,bakery
+chicken breast,10.78,3,deli
+chicken thigh,8.99,5,deli
+parma ham,6.99,2400,deli
+ground beef,6.99,10,deli
+eggs,4.49,24,deli
+cheese,8.99,9,dairy
+goat cheese,11.99,9,dairy
+milk,3.49,13,dairy
