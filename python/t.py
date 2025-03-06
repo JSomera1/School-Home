@@ -1,9 +1,9 @@
-import pytest
+import json
 
-@pytest.fixture
-def bank():
-    bank = ('BCIT bank', 'tim')
-    return bank
 
-def test_bank(bank):
-    assert bank == "BCIT bank"
+value = """["JSON list", {"keyword": "value"}]"""
+data = json.loads(value)
+
+with open("output.json", "w") as fp:
+    json.dump(data, fp)
+print(json.dumps(data))
