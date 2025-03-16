@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world {{ name }}</h1>
+
+    <ul>
+        {% for element in my_list %}
+            <li> list element: {{ element }}</li>
+        {% endfor %}
+        
+    </ul>
+
+    <img src="{{ url_for("static", filename="camera.jpg") }}" alt="">
+    
+</body>
+</html>

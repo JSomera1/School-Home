@@ -1,0 +1,25 @@
+from flask import Flask, render_template
+from pathlib import Path
+from db import db
+
+
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///lynn.db"
+app.instance_path = Path("change_this").resolve()
+db.init_app(app)
+
+@app.route("/")
+def home():
+    # url_for("static", filename="style.css")
+    return render_template("home.html", name="tim", my_list=["Khoi", "Alex", "Jorge", "Stanley"])
+
+# @app.route("/static")
+# def static():
+#     return render_template("home.html", filename="./static/camera.jpg")
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=8008)
+
+

@@ -1,0 +1,17 @@
+{
+  "name": "week9",
+  "version": "1.0.0",
+  "main": "notes.js",
+  "scripts": {
+    "start": "node --watch notes.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.0.1",
+    "express-session": "^1.18.1"
+  }
+}
