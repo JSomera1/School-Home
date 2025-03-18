@@ -10,12 +10,17 @@ db.init_app(app)
 
 @app.route("/")
 def home():
+
     # url_for("static", filename="style.css")
     return render_template("home.html", name="tim", my_list=["Khoi", "Alex", "Jorge", "Stanley"])
 
 # @app.route("/static")
 # def static():
 #     return render_template("home.html", filename="./static/camera.jpg")
+
+# @app.route("/customers/<int:id>")
+# def customer(id):
+#     customer = db.session.execute(db.select(Customer).where(Customer.id == id))
 
 
 
