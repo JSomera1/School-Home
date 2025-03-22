@@ -18,7 +18,7 @@ app.post("/myForm", (req,res) => {
     if (databaseOfUsernames.includes(userName)) {
         res.render("pages/result", { result: messages.success})
     }
-        res.render("pages/result". { result: messages.failure})
+        res.render("pages/result", { result: messages.failure})
 })
 
 app.listen(port)
