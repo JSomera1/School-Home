@@ -1,0 +1,9 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%=user.name%></p>
+<p>Your Session ID is: <%= sessionId %></p>
+<p>Your User ID is: <%= userID %></p>
+<form action="/auth/revoke" method="POST">
+  <input type="hidden" name="sessionId" value=<%= sessionId %> />
+  <button type="submit" class="btn btn-primary"> Revoke Session</button>
+</form>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>
