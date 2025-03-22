@@ -15,7 +15,7 @@ def import_products():
             dict[category].append({"name":item, "price":price, "amount":amount})
                 
 
-            
+
 
 def import_customers():
     pass
