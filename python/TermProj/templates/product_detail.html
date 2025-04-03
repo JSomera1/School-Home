@@ -7,13 +7,12 @@
     <title>products</title>
 </head>
 <body>
-    <a href="{{ url_for("home") }}">home</a>
+    <h1>Jian Somera</h1>
+    
 
-    <ul>
-        {% for element in data %}
-            <li> List element: {{ element.name }}</li>
-        {% endfor %}
-    </ul>
+    <h1>{{ data.name }}</h1>
+    <h1>{{ data.id }}</h1>
+    <h1>{{ data.category.name }}</h1>
 
 
 </body>

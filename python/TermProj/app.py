@@ -11,40 +11,27 @@ db.init_app(app)
 
 @app.route("/")
 def home():
-    return render_template("home.html", my_list=["jian","jorge","alex"])
-
-@app.route("/categories/<string:name>")
-def category_detail(name):
-    stmt1 = db.select(Category).where(Category.name == name)
-    results = db.session.execute(stmt1).scalar()
-    return render_template("categories_details.html", category=results)
-
-@app.route("/customers")
-def customers():
-    statement = db.select(Customer)
-    results = db.session.execute(statement).scalars()
-    return render_template("customers.html", data=results)
-
-@app.route("/customers/<int:customer_id>")
-def customer_detail(customer_id):
-    statement = db.select(Customer).where(Customer.id == customer_id)
-    results = db.session.execute(statement).scalar()
-    return render_template("customer_detail.html", customer=results)
+    return render_template("home.html")
 
 @app.route("/products")
 def products():
     statement = db.select(Product)
-    results = db.session.execute(statement).scalars()
- 
-    return render_template("products.html", data=results)
+    result = db.session.execute(statement).scalars()
+    return render_template("products.html", data=result)
 
-@app.route("/products/<int:product_id>")
-def product_detail(product_id):
-   
-    statement = db.select(Product).where(Product.id == product_id)
-    results = db.session.execute(statement).scalar()
-    return render_template("product_detail.html", product=results)
+@app.route("/products/<string:name>")
+def product_detail(name):
+    statement = db.select(Product).where(Product.name == name)
+    cat = db.session.execute(statement).scalar()
+    return render_template("product_detail.html", data=cat)
 
+@app.route("/categories")
+def categories():
+    return render_template("categories.html")
+
+@app.route("/customers")
+def customers():
+    return render_template("customers.html")
 
 
 

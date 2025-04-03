@@ -8,7 +8,9 @@
 </head>
 <body>
     <h1>Jian Somera</h1>
-    <a href="{{ url_for('category_detail', category=category.id) }}">{{ category.name }}</a>
+    <a href="{{ url_for("home") }}">home</a>
+    <a href="{{ url_for('products', product=Product.id) }}"> Carrot</a>
+
 
     <ul>
         {% for element in my_list %}
