@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+    <title>Ur mother</title>
+</head>
+<body>
+    <h1>Jian Somera</h1>
+    <a href="{{ url_for('category_detail', category=category.id) }}">{{ category.name }}</a>
+
+    <ul>
+        {% for element in my_list %}
+            <li> List element: {{ element }}</li>
+        {% endfor %}
+    </ul>
+
+    <img src="{{ url_for("static", filename="camera.jpg") }}" alt="">
+
+</body>
+</html>
