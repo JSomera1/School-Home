@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
-    <title>Ur mother</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Homepage</h1>
+<div>
     <h1>Jian Somera</h1>
-    <a href="{{ url_for("home") }}">home</a>
-    <a href="{{ url_for('products', product=Product.id) }}"> Carrot</a>
-
-
-    <ul>
-        {% for element in my_list %}
-            <li> List element: {{ element }}</li>
-        {% endfor %}
-    </ul>
-
-    <img src="{{ url_for("static", filename="camera.jpg") }}" alt="">
-
-</body>
-</html>
+    <a href="{{ url_for('home') }}"> Homepage</a>
+    <a href="{{ url_for('customers') }}"> Customers</a>
+    <a href="{{ url_for('products') }}"> Products </a>
+    <a href="{{ url_for('categories') }}"> categories</a>
+</div>
+{% endblock %}
+    

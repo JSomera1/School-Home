@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Homepage</h1>
+<div>
+    {% for order in data %}
+    <form action="post" action="{{ url_for('complete_order', id=order.id) }}"> 
+        <h1>{{ order.id }}</h1>
+        <button type="submit"> Complete Order </button>
+    </form>
+    {% endfor %}
+</div>
+{% endblock %}
+    

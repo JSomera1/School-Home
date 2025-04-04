@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Customers</h1>
+<div>
+    {% for i in customer %}
+        <a href="{{ url_for('customers_id', id=i.id) }}"> {{ i.name }}</a>
+        <h3>{{ i.phone }}</h3>
+    {% endfor %}
+</div>
+{% endblock %}

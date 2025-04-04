@@ -1,4 +1,6 @@
 from data import db
+from random import randint 
+
 
 
 class Product(db.Model):
@@ -24,4 +26,49 @@ class Customer(db.Model):
     id=db.mapped_column(db.Integer, primary_key=True)
     name=db.mapped_column(db.String)
     phone=db.mapped_column(db.String)
+
+    orders = db.relationship("Order", back_populates="customers")
+
+
+class Order(db.Model):
+    __tablename__ = "orders"
+
+    id = db.mapped_column(db.Integer, primary_key=True)
+    created = db.mapped_column(db.DateTime, nullable=False, default=db.func.now())
+    completed = db.mapped_column(db.DateTime, nullable=True, default=None)
+    amount = db.mapped_column(db.DECIMAL(6, 2), nullable=True, default=None)
+
+    items = db.relationship("ProductOrder", back_populates='orders')
+    customer_id = db.mapped_column(db.Integer, db.ForeignKey("customers.id"))
+    customers = db.relationship("Customer", back_populates="orders")  
+
+    def estimate(self):
+        total = 0
+        for po in self.items:
+            one = po.product.price * po.quantity
+            total = total + one 
+        return total
+
+    def complete(self):
+        for i in self.items:
+            if i.quantity > i.product.inventory:
+                raise ValueError(f"not enough stock for {i.product.name}")
+            i.product.inventory -= i.quantity
+
+        self.completed = db.func.now()
+        self.amount = self.estimate()
+
+    
+class ProductOrder(db.Model):
+    __tablename__ = "items"
+
+    product_id = db.mapped_column(db.ForeignKey("products.id"), primary_key=True)
+
+    order_id = db.mapped_column(db.ForeignKey("orders.id"), primary_key=True)
+
+    quantity = db.mapped_column(db.Integer, nullable=False)
+
+    #
+    product = db.relationship("Product")
+    orders = db.relationship("Order", back_populates='items')
 
