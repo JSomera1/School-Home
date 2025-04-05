@@ -29,6 +29,11 @@ class Customer(db.Model):
 
     orders = db.relationship("Order", back_populates="customers")
 
+    def Completed(self):
+        return [x for x in self.orders if x.completed is not None]
+
+    def pending(self):
+        return [x for x in self.orders if x.completed is None]
 
 class Order(db.Model):
     __tablename__ = "orders"

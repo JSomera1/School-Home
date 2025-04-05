@@ -1,9 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Homepage</h1>
+<a href="{{ url_for('orders') }}"> Back to Orders</a>
 <div>
-    <h1> {{ id }}</h1>
+    <h3><a href="{{ url_for('customers_id', id=order.customers.id)}}"> Order by:{{ order.customers.name }}</a></h3>
+    <form method="post" action="{{ url_for('complete_order', id=order.id) }}"> 
+        <h1>{{ order.id }}</h1>
+        <h3>Price {{ order.estimate() }}</h3>
+        <ul>
+            {% for items in order.items %}
+            <li>
+                {{ items.product.name }} -- {{ items.quantity}}
+                {% if items.quantity > items.product.inventory %}
+                    <strong>Not enough</strong>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        
+        {% if order.completed == None %}
+        <button type="submit"> Complete Order </button>
+
+        {% else %}
+        <p>Completed</p>
+        {% endif %}
+        
+    </form>
 </div>
 {% endblock %}
     

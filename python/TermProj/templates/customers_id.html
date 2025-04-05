@@ -3,7 +3,28 @@
 {% block content %}
 <h1>Customers</h1>
 <div>
-    <h1>you did it!</h1>
     <h2> {{ data.name }}</h2>
+    <h3> {{ data.phone }}</h3>
+
+    <h1> Orders: </h1>
+    <h3>Pending</h3>
+    <ul>
+    {% for j in data.pending() %}
+        <li>
+            <a href="{{ url_for('order_detail', id=j.id) }}"> Order {{ j.id }} </a>
+        </li>
+    {% endfor %}
+    </ul>
+    
+    <h3>Completed</h3>
+    <ul>
+    {% for i in data.Completed() %}
+        <li>
+            <a href="{{ url_for('order_detail', id=i.id) }}"> Order {{ i.id }} </a>
+        </li>
+
+    {% endfor %}
+    </ul>
+    
 </div>
 {% endblock %}

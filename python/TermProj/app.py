@@ -65,14 +65,15 @@ def order_detail(id):
 def complete_order(id):
     order = db.session.get(Order, id)
     if not order:
-        return "Order not found", 404
+        return f"Order not found", 404
     try:
         order.complete()
         db.session.add(order)
         db.session.commit()
         return redirect(url_for("order_detail", id=id))
     except ValueError as e:
-        return render_template("error.html", message=str(e)), 409
+        return render_template("error.html", message=f"{e}"), 409
+    
     
 
     

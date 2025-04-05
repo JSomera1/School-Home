@@ -43,7 +43,7 @@ def create_products():
 
 
 def random_orders():
-    for i in range(2):
+    for i in range(15):
         rantime = dt.now() - timedelta(days=random.randint(1,3), hours=random.randint(0,15), minutes=random.randint(0,30))
         random_cus = db.session.execute(db.select(Customer).order_by(db.func.random())).scalar()
 

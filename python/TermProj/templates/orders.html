@@ -2,12 +2,40 @@
 
 {% block content %}
 <h1>Homepage</h1>
-<div>
+<div class="lists">
     {% for order in data %}
-    <form action="post" action="{{ url_for('complete_order', id=order.id) }}"> 
-        <h1>{{ order.id }}</h1>
-        <button type="submit"> Complete Order </button>
-    </form>
+    <div class="orders">
+        <h1><a href="{{ url_for('order_detail', id=order.id)}}">Order #{{ order.id }}</a></h1>
+        <h4>{{ order.customers.name }}</h4>
+        <p>Price: {{ order.estimate() }}</p>
+
+        <p>Order Completed: {{ order.completed }}</p>
+        <ul>
+            {% for items in order.items %}
+            {% if items.quantity > items.product.inventory %}
+            <li style="color:red; font-weight:bold;">{{ items.product.name }} - {{ items.quantity }}</li>
+            {% else %}
+            <li>{{ items.product.name }} - {{ items.quantity }}
+                {% if items.quantity > items.product.inventory %}
+                    <strong>Not enough</strong>
+                {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+            
+        </ul>
+        
+
+        {% if order.completed == None %}
+        <a href="{{ url_for('order_detail', id=order.id)}}">Complete order</a>
+        {% else %}
+        <p>Completed</p>
+        {% endif %}
+
+            
+    </div> 
+    
+    
     {% endfor %}
 </div>
 {% endblock %}
