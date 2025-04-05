@@ -13,6 +13,19 @@ def products():
     all_product = db.session.execute(db.select(Product)).scalars()
     return jsonify([product.to_dict() for product in all_product])
 
+@api_bp.route("/products/<ID>")
+def product(ID):
+    single = db.session.execute(db.select(Product).where(Product.id == ID)).scalars()
+    if ID not in single:
+        return {"message": "ID not found"}, 404
+    else:
+        return jsonify([product.to_dict() for product in single])
+    
+@api_bp.route("/orders")
+def orderse():
+    all_orders = db.session.execute(db.select(Order)).scalars()
+    return jsonify([customers.to_dict() for customers in all_orders])
+
 @api_bp.route("/create", methods=["POST"])
 def create():
     return 

@@ -15,11 +15,10 @@ class Product(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
             "name": self.name,
             "price": self.price,
             "inventory": self.inventory,
-            "category": self.category.name
+            "quantity": self.category
         }
 
 class Category(db.Model):
@@ -71,6 +70,24 @@ class Order(db.Model):
 
         self.completed = db.func.now()
         self.amount = self.estimate()
+
+    def to_dict(self):
+        items = db.session.execute(db.select(ProductOrder).where(ProductOrder.order_id == self.id)).scalars()
+        return {
+            "id": self.id,
+            # "complete": db.select(Order).where(Order.completed != None),
+            "created":self.created,
+            "name": self.customers.name,
+            "price": self.estimate(),
+            "items": [{
+                "inventory": items.products.inventory,
+                "name": items.products.name,
+                "price": items.products.price,
+                "quantity": items.quantity
+            } for x in items]
+            
+        }
+        
 
     
 class ProductOrder(db.Model):
