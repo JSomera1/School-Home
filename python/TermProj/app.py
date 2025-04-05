@@ -1,7 +1,8 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, jsonify
 from pathlib import Path
 from data import db
 from model import *
+from routes.api import api_bp
 
 
 app = Flask(__name__)
@@ -73,6 +74,8 @@ def complete_order(id):
         return redirect(url_for("order_detail", id=id))
     except ValueError as e:
         return render_template("error.html", message=f"{e}"), 409
+    
+app.register_blueprint(api_bp, url_prefix="/api")
     
     
 

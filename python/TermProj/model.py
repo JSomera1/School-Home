@@ -13,6 +13,15 @@ class Product(db.Model):
     category_id = db.mapped_column(db.Integer, db.ForeignKey("categories.id"))
     category = db.relationship("Category", back_populates="products")
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "inventory": self.inventory,
+            "category": self.category.name
+        }
+
 class Category(db.Model):
     __tablename__ = "categories"
 
