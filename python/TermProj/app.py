@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, jsonify
+from flask import Flask, render_template, url_for, redirect, request
 from pathlib import Path
 from data import db
 from model import *
@@ -16,7 +16,17 @@ def home():
 
 @app.route("/products")
 def products():
+    sort = request.args.get("sort")
+
     statement = db.select(Product)
+
+    if sort == "name":
+        statement = statement.order_by(Product.name)
+    elif sort == "price":
+        statement = statement.order_by(Product.price)
+    elif sort == "inventory":
+        statement = statement.order_by(Product.inventory)
+    
     result = db.session.execute(statement).scalars()
     return render_template("products.html", data=result)
 
@@ -47,10 +57,21 @@ def customers_id(id):
 
 @app.route("/orders")
 def orders():
+    sort = request.args.get("sort")
+
     statement = db.select(Order)
-    records = db.session.execute(statement)
-    orders = records.scalars().all()
-    return render_template("orders.html", data=orders)
+
+    if sort == "created":
+        statement = statement.order_by(Order.created)
+    elif sort == "id" or sort == "ID":
+        statement = statement.order_by(Order.id)
+    elif sort == "amount":
+        statement = statement.order_by(Order.amount)
+    elif sort == "completed":
+        statement = statement.order_by(Order.completed)
+
+    records = db.session.execute(statement).scalars()
+    return render_template("orders.html", data=records)
 
 @app.route("/orders/<int:id>")
 def order_detail(id):

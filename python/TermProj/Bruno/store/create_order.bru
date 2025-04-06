@@ -1,0 +1,22 @@
+meta {
+  name: create_order
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/api/orders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+   "customer_phone": "778-310-5546",
+   "items": [
+   ["potato", 10],
+   ["milk", 2]
+  ]
+  }
+  
+}

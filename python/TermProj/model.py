@@ -1,5 +1,6 @@
 from data import db
 from random import randint 
+from flask import jsonify
 
 
 
@@ -18,7 +19,7 @@ class Product(db.Model):
             "name": self.name,
             "price": self.price,
             "inventory": self.inventory,
-            "quantity": self.category
+
         }
 
 class Category(db.Model):
@@ -42,6 +43,14 @@ class Customer(db.Model):
 
     def pending(self):
         return [x for x in self.orders if x.completed is None]
+    
+    # def to_json(self):
+    #     complete = db.session.execute(db.select(Order).where(Order.customers.has(Customer.id == self.id))).scalars()
+    #     return [x for x in complete if x.completed]
+
+        
+    
+
 
 class Order(db.Model):
     __tablename__ = "orders"
@@ -72,19 +81,14 @@ class Order(db.Model):
         self.amount = self.estimate()
 
     def to_dict(self):
-        items = db.session.execute(db.select(ProductOrder).where(ProductOrder.order_id == self.id)).scalars()
         return {
             "id": self.id,
-            # "complete": db.select(Order).where(Order.completed != None),
+            "completed": bool(self.completed),
+            "completed_date": self.completed,
             "created":self.created,
             "name": self.customers.name,
-            "price": self.estimate(),
-            "items": [{
-                "inventory": items.products.inventory,
-                "name": items.products.name,
-                "price": items.products.price,
-                "quantity": items.quantity
-            } for x in items]
+            "estimated_total": self.estimate(),
+            "products": [x.to_dict() for x in self.items]
             
         }
         
@@ -99,7 +103,17 @@ class ProductOrder(db.Model):
 
     quantity = db.mapped_column(db.Integer, nullable=False)
 
-    #
     product = db.relationship("Product")
     orders = db.relationship("Order", back_populates='items')
+
+    def to_dict(self):
+        return {
+            "name": self.product.name,
+            "price": self.product.price,
+            "inventory": self.product.inventory,
+            "quantity": self.quantity
+        }
+    
+    def to_json(self):
+        return jsonify()
 
