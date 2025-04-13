@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, request
 from pathlib import Path
 from data import db
 from model import *
-from routes.api import api_bp
+from routes import api_bp
 
 
 app = Flask(__name__)

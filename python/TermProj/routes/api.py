@@ -12,7 +12,7 @@ def example_api():
 @api_bp.route("/products")
 def products():
     all_product = db.session.execute(db.select(Product)).scalars()
-    return jsonify([product.to_dict() for product in all_product])
+    return jsonify([product.to_json() for product in all_product])
     
 @api_bp.route("/products/<string:name>", methods=["PUT"])
 def products_change(name):
@@ -26,7 +26,7 @@ def products_change(name):
         product.inventory = data['inventory']
         product.price = data["price"]
         db.session.commit()
-        return jsonify(product.to_dict())
+        return jsonify(product.to_json())
     except TypeError:
         return "inventory/price cannot be negative", 400
     
@@ -39,7 +39,7 @@ def products_add(name):
     new_product = Product(name=data['name'], price=data['price'], category=cat, inventory=data['inventory'])
     db.session.add(new_product)
     db.session.commit()
-    return new_product.to_dict()
+    return new_product.to_json()
 
 @api_bp.route("/customers")
 def show_customer():
@@ -49,7 +49,7 @@ def show_customer():
 @api_bp.route("/orders")
 def orders():
     all_orders = db.session.execute(db.select(Order)).scalars()
-    return jsonify([customers.to_dict() for customers in all_orders])
+    return jsonify([customers.to_json() for customers in all_orders])
 
 @api_bp.route("/orders/<ID>")
 def product(ID):
@@ -57,7 +57,7 @@ def product(ID):
     if not bool(single):
         return {"message": "ID not found"}, 404
     else:
-        return jsonify([order.to_dict() for order in single])
+        return jsonify([order.to_json() for order in single])
 
 @api_bp.route("/orders/<ORDER_NUMBER>", methods=["PUT"])
 def order_number(ORDER_NUMBER):
@@ -79,7 +79,7 @@ def order_number(ORDER_NUMBER):
                 db.session.commit()
         
     
-    return jsonify(order.to_dict())
+    return jsonify(order.to_json())
     
 @api_bp.route("/orders", methods=["POST"])
 def create_order():
@@ -104,7 +104,7 @@ def create_order():
         product = ProductOrder(product=check, quantity=item[1], orders=order)
         db.session.add(product)
     db.session.commit()
-    return jsonify(order.to_dict())
+    return jsonify(order.to_json())
 
 @api_bp.route("/create", methods=["POST"])
 def create():

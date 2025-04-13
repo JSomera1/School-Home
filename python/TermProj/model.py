@@ -1,6 +1,4 @@
 from data import db
-from random import randint 
-from flask import jsonify
 
 
 
@@ -14,7 +12,7 @@ class Product(db.Model):
     category_id = db.mapped_column(db.Integer, db.ForeignKey("categories.id"))
     category = db.relationship("Category", back_populates="products")
 
-    def to_dict(self):
+    def to_json(self):
         return {
             "name": self.name,
             "price": self.price,
@@ -39,14 +37,23 @@ class Customer(db.Model):
     orders = db.relationship("Order", back_populates="customers")
 
     def Completed(self):
-        return [x for x in self.orders if x.completed is not None]
+        return [x.to_json() for x in self.orders if x.completed is not None]
 
     def pending(self):
-        return [x for x in self.orders if x.completed is None]
+        return [x.to_json() for x in self.orders if x.completed is None]
     
-    # def to_json(self):
-    #     complete = db.session.execute(db.select(Order).where(Order.customers.has(Customer.id == self.id))).scalars()
-    #     return [x for x in complete if x.completed]
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "phone" : self.phone,
+            "pending": self.pending(),
+            "completed orders": self.Completed()
+        }
+        
+        
+        
+    
 
         
     
@@ -80,7 +87,7 @@ class Order(db.Model):
         self.completed = db.func.now()
         self.amount = self.estimate()
 
-    def to_dict(self):
+    def to_json(self):
         return {
             "id": self.id,
             "completed": bool(self.completed),
@@ -88,7 +95,7 @@ class Order(db.Model):
             "created":self.created,
             "name": self.customers.name,
             "estimated_total": self.estimate(),
-            "products": [x.to_dict() for x in self.items]
+            "products": [x.to_json() for x in self.items]
             
         }
         
@@ -106,7 +113,7 @@ class ProductOrder(db.Model):
     product = db.relationship("Product")
     orders = db.relationship("Order", back_populates='items')
 
-    def to_dict(self):
+    def to_json(self):
         return {
             "name": self.product.name,
             "price": self.product.price,
@@ -114,6 +121,3 @@ class ProductOrder(db.Model):
             "quantity": self.quantity
         }
     
-    def to_json(self):
-        return jsonify()
-
