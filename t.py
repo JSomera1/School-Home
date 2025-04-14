@@ -1,11 +1,13 @@
-import csv 
+list = [7,9,10,6,8]
+list.sort()
+print()
 
-cat = {}
-with open("products.csv", encoding="utf8") as fp:
-    lines = csv.DictReader(fp)
-    for i in lines:
-        if i['category'] not in cat:
-            cat[i["category"]] = []
-        cat[i["category"]].append({"name":i['name'], "price":i["price"], "available":i["available"]})
+print(list)
 
-print(cat["deli"])
+set_variable = {7,9,6,8,5}
+print(set_variable)
+
+def keysort(val):
+    return val[0]
+
+dict = {"x": 7, "Y":5, "z":6}

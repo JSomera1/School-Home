@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from data import db
-from model import *
+from model import Customer, Order, Product, Category, ProductOrder
 from datetime import datetime as dt
 
 api_bp = Blueprint("api", __name__)
@@ -60,7 +60,7 @@ def product(ID):
         return jsonify([order.to_json() for order in single])
 
 @api_bp.route("/orders/<ORDER_NUMBER>", methods=["PUT"])
-def order_number(ORDER_NUMBER):
+def complete_order(ORDER_NUMBER):
     order = db.session.execute(db.select(Order).where(Order.id == ORDER_NUMBER)).scalar()
     data = request.json
 
@@ -70,12 +70,14 @@ def order_number(ORDER_NUMBER):
         for items in order.items:
             if items.quantity > items.product.inventory:
                 items.quantity = items.product.inventory
+                order.completed = dt.now()
                 db.session.commit()
 
     elif data['strategy'] == "delete":
         for items in order.items:
             if items.quantity > items.product.inventory or items.quantity == 0:
                 db.session.delete(items)
+                order.completed = dt.now()
                 db.session.commit()
         
     

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, redirect, request
 from pathlib import Path
 from data import db
-from model import *
+from model import Customer, Order, Product, Category, ProductOrder
 from routes import api_bp
 
 

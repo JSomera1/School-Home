@@ -47,18 +47,10 @@ class Customer(db.Model):
             "id": self.id,
             "name": self.name,
             "phone" : self.phone,
-            "pending": self.pending(),
-            "completed orders": self.Completed()
+            "pending_orders": self.pending(),
+            "completed_orders": self.Completed()
         }
         
-        
-        
-    
-
-        
-    
-
-
 class Order(db.Model):
     __tablename__ = "orders"
 
@@ -99,8 +91,6 @@ class Order(db.Model):
             
         }
         
-
-    
 class ProductOrder(db.Model):
     __tablename__ = "items"
 

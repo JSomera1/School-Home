@@ -1,5 +1,5 @@
 from data import db
-from model import *
+from model import Customer, Order, Product, Category, ProductOrder
 import csv
 from app import app
 import random

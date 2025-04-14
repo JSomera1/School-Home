@@ -3,9 +3,11 @@
 {% block content %}
 <h1> {{ data.name }}</h1>
 <div class="d-flex flex-wrap">
-    {% for category in data %}
-    <div class="m-2 p-3 border border-black text-center">
-        <h1>{{ category.name }}</h1>
+    {% for element in data %}
+    <div class="orders">
+        <h1> {{ element.name }}</h1>
+        <p> Price: {{ element.price }}</p>
+        <p> Stock: {{ element.inventory }}</p>
     </div>
     {% endfor %}
 </div>
