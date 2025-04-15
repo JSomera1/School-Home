@@ -37,10 +37,14 @@ class Customer(db.Model):
     orders = db.relationship("Order", back_populates="customers")
 
     def Completed(self):
-        return [x.to_json() for x in self.orders if x.completed is not None]
+        stmt = db.select(Order).where(Order.customer.has(Customer.id == self.id)).order_by(Order.completed.desc())
+        result = db.session.execute(stmt).scalars()
+        return [x.to_json() for x in result]
 
     def pending(self):
-        return [x.to_json() for x in self.orders if x.completed is None]
+        stmt = db.select(Order).where(Order.customer.has(Customer.id == self.id)).order_by(Order.created.asc())
+        result = db.session.execute(stmt).scalars()
+        return [x.to_json() for x in result]
     
     def to_json(self):
         return {

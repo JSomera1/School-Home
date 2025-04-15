@@ -5,7 +5,7 @@
 <div class="lists">
     {% for order in data %}
     <div class="orders">
-        <h1><a href="{{ url_for('order_detail', id=order.id)}}">Order #{{ order.id }}</a></h1>
+        <h1><a href="{{ url_for('html.order_detail', id=order.id)}}">Order #{{ order.id }}</a></h1>
         <h4>{{ order.customers.name }}</h4>
         <p>Price: {{ order.estimate() }}</p>
 
@@ -27,7 +27,7 @@
         
 
         {% if order.completed == None %}
-        <a href="{{ url_for('order_detail', id=order.id)}}">Complete order</a>
+        <a href="{{ url_for('html.order_detail', id=order.id)}}">Complete order</a>
         {% else %}
         <p>Completed</p>
         {% endif %}

@@ -4,11 +4,11 @@
 <img src="{{ url_for('static', filename='camera.jpg') }}" alt="">
 <h1>Homepage</h1>
 <div>
-    <a href="{{ url_for('home') }}"> Homepage</a>
-    <a href="{{ url_for('customers') }}"> Customers</a>
-    <a href="{{ url_for('products') }}"> Products </a>
-    <a href="{{ url_for('categories') }}"> categories</a>
-    <a href="{{ url_for('orders') }}">Orders</a>
+    <a href="{{ url_for('html.home') }}"> Homepage</a>
+    <a href="{{ url_for('html.customers') }}"> Customers</a>
+    <a href="{{ url_for('html.products') }}"> Products </a>
+    <a href="{{ url_for('html.categories') }}"> categories</a>
+    <a href="{{ url_for('html.orders') }}">Orders</a>
 </div>
 {% endblock %}
     

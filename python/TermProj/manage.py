@@ -1,5 +1,5 @@
 from data import db
-from model import Customer, Order, Product, Category, ProductOrder
+from models import Customer, Order, Product, Category, ProductOrder
 import csv
 from app import app
 import random
@@ -66,5 +66,6 @@ if __name__ == "__main__":
     create()
     create_customers()
     create_products()
+    random_orders()
     random_orders()
     

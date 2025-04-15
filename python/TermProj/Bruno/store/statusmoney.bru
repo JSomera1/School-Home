@@ -1,0 +1,18 @@
+meta {
+  name: statusmoney
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:3000/exam/customer/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "money": 124.56,
+    "premium":false
+  }
+}

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from data import db
-from model import Customer, Order, Product, Category, ProductOrder
+from models import Customer, Order, Product, Category, ProductOrder
 from datetime import datetime as dt
 
 api_bp = Blueprint("api", __name__)
@@ -107,6 +107,8 @@ def create_order():
         db.session.add(product)
     db.session.commit()
     return jsonify(order.to_json())
+
+
 
 @api_bp.route("/create", methods=["POST"])
 def create():
