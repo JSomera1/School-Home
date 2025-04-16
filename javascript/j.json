@@ -1,0 +1,92 @@
+{
+    "result": [
+      {
+        "message": "Hello, John! Your order number is: #85",
+        "phoneNumber": "953-711-1901",
+        "phoneVariation": "+90 319 149 10 70",
+        "status": "active",
+        "name": {
+          "first": "Josefa",
+          "middle": "Gray",
+          "last": "King"
+        },
+        "username": "Josefa-King",
+        "password": "RjQUjOdL5zXMBH1",
+        "emails": [
+          "Reba.Luettgen77@example.com",
+          "Skye_Hackett6@example.com"
+        ],
+        "location": {
+          "street": "4185 Maurine Fords",
+          "city": "Kunzeport",
+          "state": "Nevada",
+          "country": "Lithuania",
+          "zip": "77188-6984",
+          "coordinates": {
+            "latitude": "7.4144",
+            "longitude": "51.9915"
+          }
+        },
+        "website": "https://masculine-carp.net",
+        "domain": "imperturbable-accordion.name",
+        "job": {
+          "title": "Regional Creative Designer",
+          "descriptor": "Direct",
+          "area": "Functionality",
+          "type": "Analyst",
+          "company": "Jones - Reichel"
+        },
+        "creditCard": {
+          "number": "6011-5447-7103-9238",
+          "cvv": "612",
+          "issuer": "discover"
+        },
+        "uuid": "7a6e9c01-015e-4f65-848c-ed80af78d810",
+        "objectId": "67ff30be1ae8232db9de8525"
+      },
+      {
+        "message": "Hello, Emilie! Your order number is: #75",
+        "phoneNumber": "(398) 230-6863 x3209",
+        "phoneVariation": "+90 300 456 10 54",
+        "status": "disabled",
+        "name": {
+          "first": "Emilia",
+          "middle": "Harper",
+          "last": "Welch"
+        },
+        "username": "Emilia-Welch",
+        "password": "pPc0jF5p5FW2EnL",
+        "emails": [
+          "Erin_Moen69@gmail.com",
+          "Clarabelle_Rath79@example.com"
+        ],
+        "location": {
+          "street": "1029 Norwood Point",
+          "city": "Fort Danikafurt",
+          "state": "New York",
+          "country": "North Macedonia",
+          "zip": "02470-5105",
+          "coordinates": {
+            "latitude": "-42.8551",
+            "longitude": "-73.8085"
+          }
+        },
+        "website": "https://high-coevolution.com/",
+        "domain": "rare-tabernacle.net",
+        "job": {
+          "title": "Global Quality Officer",
+          "descriptor": "Product",
+          "area": "Functionality",
+          "type": "Producer",
+          "company": "Hermann - Runolfsdottir"
+        },
+        "creditCard": {
+          "number": "5491-4232-6009-9006",
+          "cvv": "864",
+          "issuer": "american_express"
+        },
+        "uuid": "c1044a19-ca9f-41c6-acff-bd362d6d7b31",
+        "objectId": "67ff30be1ae8232db9de8526"
+      }
+    ]
+  }

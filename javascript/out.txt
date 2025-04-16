@@ -1,0 +1,36 @@
+apple
+name
+lemon
+raspberries
+bananas
+onions
+potato
+tomato
+chicken breast
+bread
+orange
+parma ham
+cheese
+chicken thigh
+ground beef
+goat cheese
+eggs
+milk
+name
+apple
+bananas
+raspberries
+lemon
+orange
+onions
+bread
+tomato
+chicken breast
+parma ham
+chicken thigh
+eggs
+potato
+goat cheese
+milk
+cheese
+ground beef
